@@ -1,0 +1,20 @@
+{
+  "name": "node-bounded-context-canvas",
+  "version": "1.0.0",
+  "description": "",
+  "engines": {
+    "node": "14.17.1"
+  },
+  "scripts": {
+    "dev": "nodemon --exec babel-node src/serverDev.ts --extensions '.ts,.js'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "uuid": "^8.3.0"
+  },
+  "devDependencies": {
+    "@types/uuid": "^8.3.0"
+  }
+}
