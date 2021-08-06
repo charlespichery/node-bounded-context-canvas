@@ -1,6 +1,4 @@
-import {QueryBus} from "../../core/query/QueryBus";
 import {DomainDescription} from "../../../domain/DomainDescription";
-import {CommandBus} from "../../core/command/CommandBus";
 import {DomainDescriptionBuilder} from "../../../domain/DomainDescriptionBuilder";
 import {Classification} from "../../../domain/model/Classification";
 import {BusinessModel} from "../../../domain/model/BusinessModel";
@@ -9,12 +7,12 @@ import {ModelTrait} from "../../../domain/model/ModelTrait";
 import {CollaboratorDescriptionBuilder} from "../../../domain/model/collaborator/CollaboratorDescriptionBuilder";
 import {CollaboratorType} from "../../../domain/model/collaborator/CollaboratorType";
 import {ORDER, OrderQueryHandler} from "./query/OrderQueryHandler";
-import {CREATE_ORDER, CreateOrderCommand, CreateOrderCommandHandler} from "./command/CreateOrderCommandHandler";
+import {CREATE_ORDER, CreateOrderCommandHandler} from "./command/CreateOrderCommandHandler";
 import {Order} from "./Order";
 import {ORDER_SHIPPED} from "../shipping/event/OrderShippedEvent";
 import {OrderShippedEventHandler} from "./event/OrderShippedEventHandler";
 
-export const describeOrder = (queryBus: QueryBus, commandBus: CommandBus): DomainDescription => {
+export const describeOrder = (): DomainDescription => {
     const listOfOrders: Order[] = [];
     return new DomainDescriptionBuilder()
         .withName("order")
@@ -23,9 +21,9 @@ export const describeOrder = (queryBus: QueryBus, commandBus: CommandBus): Domai
         .withBusinessModel(BusinessModel.REVENUE_GENERATOR)
         .withEvolution(Evolution.CUSTOM_BUILT)
         .addModelTrait(ModelTrait.ENGAGEMENT_CONTEXT)
-        .addBusinessDecision("An user can create an order.")
-        .addBusinessDecision("An user can add an item to an order.")
-        .addBusinessDecision("An user can pay for an order.")
+        .addBusinessDecision("A user can create an order.")
+        .addBusinessDecision("A user can add an item to an order.")
+        .addBusinessDecision("A user can pay for an order.")
         .addBusinessDecision("An order can be canceled.")
         .addBusinessDecision("An order has a status.")
         .addLanguageElement(
